@@ -7,8 +7,14 @@ using ShipIt.Models.ApiModels;
 using ShipIt.Repositories;
 
 namespace ShipIt.Controllers
-{
+{   
     [Route("orders/outbound")]
+
+    public class Trucks
+    {
+        public int TruckCount { get; set; }
+    }
+
     public class OutboundOrderController : ControllerBase
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod()?.DeclaringType);
@@ -94,6 +100,11 @@ namespace ShipIt.Controllers
             }
 
             _stockRepository.RemoveStock(request.WarehouseId, lineItems);
+
+            // return new Trucks()
+            // {
+            //     TruckCount = 100,
+            // };
         }
     }
 }
