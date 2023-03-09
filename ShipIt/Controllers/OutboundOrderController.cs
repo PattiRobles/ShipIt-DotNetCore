@@ -29,7 +29,7 @@ namespace ShipIt.Controllers
         }
 
         [HttpPost("")]
-        public int Post([FromBody] OutboundOrderRequestModel request)
+        public int Post([FromBody] OutboundOrderRequestModel request) 
         {
             Log.Info(String.Format("Processing outbound order: {0}", request));
 
@@ -61,9 +61,9 @@ namespace ShipIt.Controllers
                 }
                 else
                 {
+                    // are we calculating totalweight before additional stock addedd / dismissed due to lack of stock?
                     var product = products[orderLine.gtin];
-                    // totalweight add
-                    totalWeight += product.Weight * orderLine.quantity;
+                    totalWeight += product.Weight * orderLine.quantity; 
                     lineItems.Add(new StockAlteration(product.Id, orderLine.quantity));
                     productIds.Add(product.Id);
                 }

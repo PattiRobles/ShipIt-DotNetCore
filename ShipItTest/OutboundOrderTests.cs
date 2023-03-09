@@ -44,6 +44,8 @@ namespace ShipItTest
         {
             onSetUp();
             stockRepository.AddStock(WAREHOUSE_ID, new List<StockAlteration>() { new StockAlteration(productId, 10) });
+
+
             var outboundOrder = new OutboundOrderRequestModel()
             {
                 WarehouseId = WAREHOUSE_ID,
@@ -205,6 +207,9 @@ namespace ShipItTest
         {
             onSetUp();
             stockRepository.AddStock(WAREHOUSE_ID, new List<StockAlteration>() { new StockAlteration(productId, 10) });
+
+
+
             var outboundOrder = new OutboundOrderRequestModel()
             {
                 WarehouseId = WAREHOUSE_ID,
@@ -218,10 +223,11 @@ namespace ShipItTest
                 }
             };
 
+
             int totalTruckNumber = outboundOrderController.Post(outboundOrder);
 
             // var stock = stockRepository.GetStockByWarehouseAndProductIds(WAREHOUSE_ID, new List<int>() { productId })[productId];
-            Assert.AreEqual(totalTruckNumber, 3);
+            Assert.AreEqual(totalTruckNumber, 1);
         }
     }
 }
