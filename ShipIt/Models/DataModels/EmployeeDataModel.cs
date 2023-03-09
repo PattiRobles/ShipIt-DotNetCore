@@ -5,7 +5,9 @@ using ShipIt.Models.ApiModels;
 namespace ShipIt.Models.DataModels
 {
     public class EmployeeDataModel : DataModel
-    {
+    {   
+        // [DatabaseColumnName("e_id")]
+        // public int EmployeeId { get; set; }
         [DatabaseColumnName("name")]
         public string Name { get; set; }
         [DatabaseColumnName("w_id")]

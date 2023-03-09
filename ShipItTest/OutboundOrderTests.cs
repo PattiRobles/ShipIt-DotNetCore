@@ -218,7 +218,7 @@ namespace ShipItTest
                     new OrderLine()
                     {
                         gtin = GTIN,
-                        quantity = 3
+                        quantity = 9
                     }
                 }
             };
@@ -227,7 +227,7 @@ namespace ShipItTest
             int totalTruckNumber = outboundOrderController.Post(outboundOrder);
 
             // var stock = stockRepository.GetStockByWarehouseAndProductIds(WAREHOUSE_ID, new List<int>() { productId })[productId];
-            Assert.AreEqual(totalTruckNumber, 1);
+            Assert.AreEqual(totalTruckNumber, 2);
         }
     }
 }
