@@ -27,6 +27,9 @@ namespace ShipIt.Controllers
             _productRepository = productRepository;
         }
 
+        // add index to table if not yet present
+        // change query 46-48 to get all products for all stock rather than checking per stock item
+
         [HttpGet("{warehouseId}")]
         public InboundOrderResponse Get([FromRoute] int warehouseId)
         {
@@ -42,6 +45,9 @@ namespace ShipIt.Controllers
             foreach (var stock in allStock)
             {
                 Product product = new Product(_productRepository.GetProductById(stock.ProductId));
+
+
+
                 if(stock.held < product.LowerThreshold && !product.Discontinued)
                 {
                     Company company = new Company(_companyRepository.GetCompany(product.Gcp));

@@ -42,7 +42,7 @@ namespace ShipIt.Controllers
                 .Select(e => new Employee(e));
 
             Log.Info(String.Format("Found employees: {0}", employees));
-            
+
             return new EmployeeResponse(employees);
         }
 

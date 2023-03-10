@@ -108,6 +108,25 @@ namespace ShipIt.Controllers
 
             int totalTrucks = (int)Math.Ceiling((decimal)(totalWeight)/2000);
 
+
+            //     We don’t mind too much what the format of the new data is (our front end team will work with whatever you provide) but it should be clear;
+
+            //     How many trucks we will need to process the order
+
+            //     What items should be contained in each truck
+
+            //     The total weight of the items in each truck
+
+            //     As for how the items should be divided between the trucks, again we’ll leave it in part up to you - but please ensure that the following remains true
+
+            //     No truck is assigned more than 2000kg in total.
+
+            //     (where possible given the above) orders of a single product are loaded onto the same truck (or as few trucks as possible) - this makes it much easier to load!
+
+            //     while keeping both of the above true, try to keep the number of trucks we need as small as possible!
+
+            //     {totalTrucksNumber: X, truckX: {items: lineItemx, lineItemy, weight: int}}, 
+
             return totalTrucks;
         }
 

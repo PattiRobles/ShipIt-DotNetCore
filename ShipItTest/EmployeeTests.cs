@@ -1,8 +1,8 @@
 ﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
- using NUnit.Framework;
- using ShipIt.Controllers;
+using NUnit.Framework;
+using ShipIt.Controllers;
 using ShipIt.Exceptions;
 using ShipIt.Models.ApiModels;
 using ShipIt.Repositories;
@@ -23,7 +23,7 @@ namespace ShipItTest
         {
             onSetUp();
             var employee = new EmployeeBuilder().CreateEmployee();
-            employeeRepository.AddEmployees(new List<Employee>() {employee});
+            employeeRepository.AddEmployees(new List<Employee>() { employee });
             Assert.AreEqual(employeeRepository.GetEmployeeByName(employee.Name).Name, employee.Name);
             Assert.AreEqual(employeeRepository.GetEmployeeByName(employee.Name).Ext, employee.ext);
             Assert.AreEqual(employeeRepository.GetEmployeeByName(employee.Name).WarehouseId, employee.WarehouseId);
@@ -34,7 +34,7 @@ namespace ShipItTest
         {
             onSetUp();
             var employeeBuilder = new EmployeeBuilder().setName(NAME);
-            employeeRepository.AddEmployees(new List<Employee>() {employeeBuilder.CreateEmployee()});
+            employeeRepository.AddEmployees(new List<Employee>() { employeeBuilder.CreateEmployee() });
             var result = employeeController.Get(NAME);
 
             var correctEmployee = employeeBuilder.CreateEmployee();
@@ -150,14 +150,20 @@ namespace ShipItTest
             employeeRepository.AddEmployees(new List<Employee>() { employeeBuilder.CreateEmployee() });
             var addEmployeesRequest = employeeBuilder.CreateAddEmployeesRequest();
 
+            bool exceptionCaught = false;
+
             try
             {
                 employeeController.Post(addEmployeesRequest);
-                Assert.Fail("Expected exception to be thrown.");
             }
             catch (Exception)
             {
-                Assert.IsTrue(true);
+                exceptionCaught = true;
+                Assert.Fail("Expected exception to be thrown.");
+            }
+            finally
+            {
+                Assert.IsTrue(!exceptionCaught);
             }
         }
 
